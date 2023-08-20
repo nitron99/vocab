@@ -5,8 +5,7 @@ import {
   ref, 
   set, 
   get, 
-  child,
-  remove
+  child
 } from "firebase/database";
 
 const DbContext = createContext();

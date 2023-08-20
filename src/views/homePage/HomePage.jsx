@@ -20,7 +20,6 @@ const HomePage = () => {
   const { logout } = useAuth();
   const { 
     getAllWords,
-    createWord,
     wordsList
   } = useDB();
 
@@ -30,21 +29,6 @@ const HomePage = () => {
     getAllWords();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-
-  const handleLogout = () => {
-    logout();
-  }
-
-  const handleCreate = () => {
-    let obj = {
-      title: "test2",
-      content: "testContent2",
-      createdAt: new Date(),
-      updatedAt: null,
-    }
-    createWord(obj);
-  }
 
   return (
     <Box sx={{ minHeight: "100vh" }}>

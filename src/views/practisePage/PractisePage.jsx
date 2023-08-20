@@ -8,7 +8,6 @@ import {
   Button,
   Avatar,
   IconButton,
-  TextField,
   LinearProgress
 } from '@mui/material';
 
@@ -23,7 +22,6 @@ import "./styles.scss";
 const PractisePage = () => {
   const { wordsList } = useDB();
   const navigate = useNavigate();
-  const [progress, setProgress] = useState(0);
   const [index, setIndex] = useState(0);
   const [reveal, setReveal] = useState(false);
 
