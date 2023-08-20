@@ -42,7 +42,7 @@ const HomePage = () => {
             pt={1}
             className="flexCenterSBRow">
             <Typography 
-              variant='h4' 
+              variant='h5' 
               color={"white"}
               fontWeight={700}>
                 Vocab.
