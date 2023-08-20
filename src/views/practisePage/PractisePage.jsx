@@ -71,8 +71,8 @@ const PractisePage = () => {
             color='secondary'
             sx={{ height: "10px", borderRadius: "12px" }}/>
           <GestureDetector
-            onSwipeLeft={handlePrevious}
-            onSwipeRight={handleNext}>
+            onSwipeLeft={handleNext}
+            onSwipeRight={handlePrevious}>
             <Box
               className='create__card'
               sx={{ height: "calc(100vh - 225px)"}}
