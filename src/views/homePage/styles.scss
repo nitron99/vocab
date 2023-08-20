@@ -1,0 +1,12 @@
+@import "../../global.scss";
+
+.word__card{
+  padding: 16px; 
+  background-color: $bg_secondary;
+  border: solid 1px $border;
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+
+  color: $main;
+}

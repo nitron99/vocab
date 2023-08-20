@@ -1,0 +1,203 @@
+@import "./theme/colors";
+
+@mixin fullWidthHeight {
+    width: 100%;
+    height: 100%;
+}
+
+.fullWidthHeight {
+    width: 100vw;
+    height: 100vh;
+}
+
+//  -------------- flex box with DIRECTION-------------
+@mixin flexDirection($direction) {
+    display: flex;
+    flex-direction: $direction;
+}
+
+@mixin flexCenterCenterDirection($direction) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flexCenterDirection($direction) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+}
+
+@mixin flex__CenterDirection($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+}
+
+@mixin flexCenterSBDirection($direction) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// ------------ flex box without DIRECTION
+@mixin flexCenterCenter() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flexCenter_Row(){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@mixin flexCenterSB(){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+//  ---------- dividers-----------------
+.divider{
+    background-color: rgb(36, 35, 35);
+    width: 1px;
+    height: 200px;
+    margin: 0px 3vw 0px 3vw;
+}
+
+.horizontal-divider{
+    background-color: rgb(184, 184, 184);
+    height: 1px;
+    width: 100%;
+}
+
+
+// ---------- global classes -----------
+
+.flexCenter_Row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.grid_2items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid_3items{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.flexCenterSBRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flexFSSBRow{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.flexFESBRow{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.flexCenterEndRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.flexCenterCenterRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex_FEColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.flex_FSColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.flex_SBColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flexFE_Column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.flex_CenterColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flexCenterCenterColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #0fd30f;
+    margin-left: 10px;
+}
+
+.badge__inactive{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: gray;
+    margin-left: 10px;
+}
+
+//---------- export to use in js file --------
+:export{
+    // colors
+    bg_primary: $bg_primary;
+    bg_secondary: $bg_secondary;
+
+    primary: $primary;
+    secondary: $secondary;
+
+    highlight: $highlight;
+    border: $border;
+
+    main: $main;
+
+    success: $success;
+    error: $error;
+}
