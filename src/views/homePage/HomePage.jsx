@@ -1,29 +1,22 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { 
   Container, 
   Typography, 
-  Box, 
-  Button,
-  Avatar,
-  IconButton
+  Box
 } from '@mui/material';
 
-import { useAuth } from  '../../contexts/authContext';
+import TopBar from '../../components/topBar/TopBar';
+
 import { useDB } from '../../contexts/firebaseDb';
 
-import styles from "../../global.scss";
 import "./styles.scss";
 
 const HomePage = () => {
-  const { logout } = useAuth();
   const { 
     getAllWords,
     wordsList
   } = useDB();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     getAllWords();
@@ -32,46 +25,7 @@ const HomePage = () => {
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
-      <Box sx={{ 
-        height: "72px", 
-        gap: "50px", 
-        backgroundColor: styles['bg_secondary'],
-        borderBottom: "solid 1px #303644" }}>
-        <Container maxWidth="md">
-          <Box
-            sx={{ height: "72px" }}
-            className="flexCenterSBRow">
-            <Typography 
-              variant='h5' 
-              color={"white"}
-              fontWeight={700}>
-                Vocab.
-            </Typography>
-            <Box sx={{ gap: "10px" }} className="flexCenter_Row">
-              <Button 
-                variant='outlined'
-                onClick={() => navigate("/create")}>
-                Create
-              </Button>
-              <Button
-                variant='outlined'
-                color='secondary'
-                onClick={() => navigate("/practise")}>
-                Practise
-              </Button>
-              <IconButton
-                sx={{ padding: 0 }}
-                onClick={() => {
-                  logout();
-                }}>
-                <Avatar
-                  alt={JSON.parse(localStorage.getItem("auth"))?.displayName}
-                  src={JSON.parse(localStorage.getItem("auth"))?.photoURL} />
-              </IconButton>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
+      <TopBar />
       <Container maxWidth="md">
         <Box pt={2}>
           <Typography 

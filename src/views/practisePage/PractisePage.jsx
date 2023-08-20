@@ -6,17 +6,16 @@ import {
   Typography, 
   Box, 
   Button,
-  Avatar,
-  IconButton,
   LinearProgress
 } from '@mui/material';
+
+import TopBar from '../../components/topBar/TopBar';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import { useDB } from '../../contexts/firebaseDb';
 
-import styles from "../../global.scss";
 import "./styles.scss";
 
 const PractisePage = () => {
@@ -24,13 +23,12 @@ const PractisePage = () => {
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const [reveal, setReveal] = useState(false);
+  const [shuffledArray, setShuffledArray] = useState([]);
 
   useEffect(() => {
-    console.log(wordsList);
+    setShuffledArray(shuffle(wordsList));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-
 
   const handlePrevious = () => {
     if(index > 0) {
@@ -40,7 +38,7 @@ const PractisePage = () => {
   }
 
   const handleNext = () => {
-    if(index !== wordsList.length -1){
+    if(index !== shuffledArray.length -1){
       setReveal(false);
       setIndex(index + 1);
     }else{
@@ -48,38 +46,19 @@ const PractisePage = () => {
     }
   }
 
-  const normalise = (value) => ((value - 0) * 100) / ((wordsList.length - 1) - 0);
+  const normalise = (value) => ((value - 0) * 100) / ((shuffledArray.length - 1) - 0);
+
+  const shuffle = (array) => { 
+    for (let i = array.length - 1; i > 0; i--) { 
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]]; 
+    } 
+    return array; 
+  }; 
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
-      <Box sx={{ 
-        height: "72px", 
-        gap: "50px", 
-        backgroundColor: styles['bg_secondary'],
-        borderBottom: "solid 1px #303644" }}>
-        <Container maxWidth="md">
-          <Box
-            pt={1}
-            className="flexCenterSBRow">
-            <Typography 
-              variant='h4' 
-              color={"white"}
-              fontWeight={700}>
-                Vocab.
-            </Typography>
-            <Box sx={{ gap: "20px" }} className="flexCenter_Row">
-              <IconButton
-                onClick={() => {
-                  
-                }}>
-                <Avatar
-                  alt={JSON.parse(localStorage.getItem("auth"))?.displayName}
-                  src={JSON.parse(localStorage.getItem("auth"))?.photoURL} />
-              </IconButton>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
+      <TopBar />
       <Container 
         maxWidth="md">
         <Box
@@ -94,13 +73,13 @@ const PractisePage = () => {
 
           <Box 
             className='create__card'
-            sx={{ height: "calc(100vh - 220px)"}}
+            sx={{ height: "calc(100vh - 225px)"}}
             mb={2}>
             <Typography
               variant='h3'
               align='center'
               mb={3}>
-              {wordsList[index].title}
+              {shuffledArray[index]?.title}
             </Typography>
             {
               reveal
@@ -108,7 +87,7 @@ const PractisePage = () => {
               <Typography
                 variant='h4'
                 align='center'>
-                {wordsList[index].content}
+                {shuffledArray[index]?.content}
               </Typography>
               :
               <Box
@@ -134,7 +113,7 @@ const PractisePage = () => {
             <Typography
               variant='body2'
               color="white">
-              {index + 1}/{wordsList.length}
+              {index + 1}/{shuffledArray.length}
             </Typography>
             <Button
               color='success'

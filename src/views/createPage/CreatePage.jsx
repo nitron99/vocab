@@ -3,17 +3,15 @@ import { useNavigate } from 'react-router-dom';
 
 import { 
   Container, 
-  Typography, 
   Box, 
   Button,
-  Avatar,
-  IconButton,
   TextField
 } from '@mui/material';
 
+import TopBar from '../../components/topBar/TopBar';
+
 import { useDB } from '../../contexts/firebaseDb';
 
-import styles from "../../global.scss";
 import "./styles.scss";
 
 const Data = {
@@ -49,34 +47,7 @@ const CreatePage = () => {
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
-      <Box sx={{ 
-        height: "72px", 
-        gap: "50px", 
-        backgroundColor: styles['bg_secondary'],
-        borderBottom: "solid 1px #303644" }}>
-        <Container maxWidth="md">
-          <Box
-            pt={1}
-            className="flexCenterSBRow">
-            <Typography 
-              variant='h4' 
-              color={"white"}
-              fontWeight={700}>
-                Vocab.
-            </Typography>
-            <Box sx={{ gap: "20px" }} className="flexCenter_Row">
-              <IconButton
-                onClick={() => {
-                  
-                }}>
-                <Avatar
-                  alt={JSON.parse(localStorage.getItem("auth"))?.displayName}
-                  src={JSON.parse(localStorage.getItem("auth"))?.photoURL} />
-              </IconButton>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
+      <TopBar />
       <Container 
         maxWidth="md">
         <Box
