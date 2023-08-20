@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GestureDetector } from 'react-onsenui';
 
 import { 
   Container, 
@@ -67,40 +68,42 @@ const PractisePage = () => {
           <LinearProgress 
             variant="determinate"
             value={normalise(index)}
-            min
             color='secondary'
             sx={{ height: "10px", borderRadius: "12px" }}/>
-
-          <Box 
-            className='create__card'
-            sx={{ height: "calc(100vh - 225px)"}}
-            mb={2}>
-            <Typography
-              variant='h3'
-              align='center'
-              mb={3}>
-              {shuffledArray[index]?.title}
-            </Typography>
-            {
-              reveal
-              ?
+          <GestureDetector
+            onSwipeLeft={handlePrevious}
+            onSwipeRight={handleNext}>
+            <Box
+              className='create__card'
+              sx={{ height: "calc(100vh - 225px)"}}
+              mb={2}>
               <Typography
-                variant='h4'
-                align='center'>
-                {shuffledArray[index]?.content}
+                variant='h3'
+                align='center'
+                mb={3}>
+                {shuffledArray[index]?.title}
               </Typography>
-              :
-              <Box
-                className="flexCenterCenterRow">
-                <Button
-                  variant='outlined'
-                  color='secondary'
-                  onClick={() => setReveal(true)}>
-                  Show
-                </Button>
-              </Box>
-            }
-          </Box>
+              {
+                reveal
+                ?
+                <Typography
+                  variant='h4'
+                  align='center'>
+                  {shuffledArray[index]?.content}
+                </Typography>
+                :
+                <Box
+                  className="flexCenterCenterRow">
+                  <Button
+                    variant='outlined'
+                    color='secondary'
+                    onClick={() => setReveal(true)}>
+                    Show
+                  </Button>
+                </Box>
+              }
+            </Box>
+          </GestureDetector>
           <Box
             className='flexCenterSBRow'>
             <Button
