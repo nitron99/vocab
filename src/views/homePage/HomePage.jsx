@@ -47,7 +47,7 @@ const HomePage = () => {
               fontWeight={700}>
                 Vocab.
             </Typography>
-            <Box sx={{ gap: "20px" }} className="flexCenter_Row">
+            <Box sx={{ gap: "10px" }} className="flexCenter_Row">
               <Button 
                 variant='outlined'
                 onClick={() => navigate("/create")}>
