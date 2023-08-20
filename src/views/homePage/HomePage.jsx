@@ -39,7 +39,7 @@ const HomePage = () => {
         borderBottom: "solid 1px #303644" }}>
         <Container maxWidth="md">
           <Box
-            pt={1}
+            sx={{ height: "72px" }}
             className="flexCenterSBRow">
             <Typography 
               variant='h5' 
@@ -60,6 +60,7 @@ const HomePage = () => {
                 Practise
               </Button>
               <IconButton
+                sx={{ padding: 0 }}
                 onClick={() => {
                   logout();
                 }}>
