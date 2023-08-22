@@ -112,7 +112,8 @@ const PractisePage = () => {
               color="info"
               variant='outlined'
               startIcon={<ChevronLeftIcon />}
-              onClick={handlePrevious}>
+              onClick={handlePrevious}
+              sx={{ width: "120px" }}>
               Previous
             </Button>
             <Typography
@@ -124,7 +125,8 @@ const PractisePage = () => {
               color='success'
               variant='outlined'
               endIcon={<NavigateNextIcon />}
-              onClick={handleNext}>
+              onClick={handleNext}
+              sx={{ width: "120px" }}>
               Next
             </Button>
           </Box>
