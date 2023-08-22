@@ -71,6 +71,7 @@ const PractisePage = () => {
             color='secondary'
             sx={{ height: "10px", borderRadius: "12px" }}/>
           <GestureDetector
+            onRelease={() => setReveal(true)}
             onSwipeLeft={handleNext}
             onSwipeRight={handlePrevious}>
             <Box
