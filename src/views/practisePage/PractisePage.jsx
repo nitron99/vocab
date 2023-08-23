@@ -117,7 +117,7 @@ const PractisePage = () => {
             onSwipeRight={handlePrevious}>
             <Box
               className='create__card'
-              sx={{ height: "calc(100vh - 280px)"}}
+              sx={{ height: "calc(100vh - 320px)"}}
               mb={2}
               p={4}>
               <Typography
