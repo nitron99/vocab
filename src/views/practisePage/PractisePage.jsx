@@ -116,7 +116,7 @@ const PractisePage = () => {
             onSwipeLeft={handleNext}
             onSwipeRight={handlePrevious}>
             <Box
-              className='create__card flex_SBColumn'
+              className='create__card'
               sx={{ height: "calc(100vh - 280px)"}}
               mb={2}>
               <Typography

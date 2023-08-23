@@ -108,12 +108,13 @@ const BookPage = () => {
           sx={{ gap: "10px" }}>
           <Box className='word__card flexCenterCenterRow'
             mt={2}
-            sx={{ cursor: "pointer", gap: "10px" }}
+            sx={{ cursor: "pointer" }}
             onClick={() => setCreateWordModalOpen(true)}>
             <AddIcon 
               color="primary"/>
             <Typography 
               variant='body2'
+              fontWeight={600}
               fontFamily={'Noto Sans, sans-serif'}
               color="primary">
               ADD
@@ -121,12 +122,13 @@ const BookPage = () => {
           </Box>
           <Box className='word__card flexCenterCenterRow'
             mt={2}
-            sx={{ cursor: "pointer", gap: "10px" }}
+            sx={{ cursor: "pointer" }}
             onClick={() => navigate("/practise/" + params.id)}>
             <SportsMartialArtsIcon 
               color="secondary"/>
             <Typography 
               variant='body2'
+              fontWeight={600}
               fontFamily={'Noto Sans, sans-serif'}
               color="secondary">
               PRACTISE
@@ -134,12 +136,13 @@ const BookPage = () => {
           </Box>
           <Box className='word__card flexCenterCenterRow'
             mt={2}
-            sx={{ cursor: "pointer", gap: "10px" }}
+            sx={{ cursor: "pointer"}}
             onClick={() => handleDeleteBook(params.id)}>
             <DeleteIcon 
               color="error"/>
             <Typography 
               variant='body2'
+              fontWeight={600}
               fontFamily={'Noto Sans, sans-serif'}
               color="error">
               DELETE
