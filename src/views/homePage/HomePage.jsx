@@ -35,8 +35,13 @@ const HomePage = () => {
   const [createBookModalOpen, setCreateBookModalOpen] = useState(false);
   const [name, setName] = useState("");
 
+  const [totalWords, setTotalWords] = useState([]);
+
   useEffect(() => {
     getBooks();
+    let arr = [];
+    booksList.forEach(i => "words" in i && arr.push(...i.words))
+    setTotalWords(arr.length);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -105,7 +110,7 @@ const HomePage = () => {
             variant='h6'
             fontFamily={'Noto Sans, sans-serif'}
             color={"white"}>
-            Total Words - {booksList.length}  
+            Total Words - {totalWords}  
           </Typography>
         </Box>
         <Box
