@@ -26,6 +26,7 @@ const AuthPage = () => {
             color="white"
             align='center'
             variant='h1'
+            fontFamily={'Noto Sans, sans-serif'}
             fontWeight={700}>
             Vocab.
           </Typography>

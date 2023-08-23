@@ -1,11 +1,9 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 import { 
   Container, 
   Typography, 
-  Box, 
-  Button,
+  Box,
   Avatar,
   IconButton
 } from '@mui/material';
@@ -16,9 +14,6 @@ import styles from "../../global.scss";
 
 const TopBar = () => {
   const { logout } = useAuth();
-
-  const navigate = useNavigate();
-  const location = useLocation();
 
   return (
     <Box sx={{ 
@@ -33,29 +28,11 @@ const TopBar = () => {
           <Typography 
             variant='h5' 
             color={"white"}
+            fontFamily={'Noto Sans, sans-serif'}
             fontWeight={700}>
               Vocab.
           </Typography>
           <Box sx={{ gap: "10px" }} className="flexCenter_Row">
-            {
-              location.pathname === "/home"
-              &&
-              <Button 
-                variant='outlined'
-                onClick={() => navigate("/create")}>
-                Create
-              </Button>
-            }
-            {
-              location.pathname === "/home"
-              &&
-              <Button
-                variant='outlined'
-                color='secondary'
-                onClick={() => navigate("/practise")}>
-                Practise
-              </Button>
-            }
             <IconButton
               sx={{ padding: 0 }}
               onClick={() => {

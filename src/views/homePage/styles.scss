@@ -1,7 +1,18 @@
 @import "../../global.scss";
 
-.word__card{
+.book__card{
   padding: 16px; 
+  background-color: $bg_secondary;
+  border: solid 1px $border;
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+
+  color: $main;
+}
+
+.word__card{
+  padding: 8px 12px 8px 12px; 
   background-color: $bg_secondary;
   border: solid 1px $border;
   border-radius: 12px;

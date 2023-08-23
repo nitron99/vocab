@@ -1,5 +1,6 @@
+/* eslint-disable eqeqeq */
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { GestureDetector } from 'react-onsenui';
 
 import { 
@@ -20,14 +21,27 @@ import { useDB } from '../../contexts/firebaseDb';
 import "./styles.scss";
 
 const PractisePage = () => {
-  const { wordsList } = useDB();
+  const { booksList } = useDB();
+  const params = useParams();
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const [reveal, setReveal] = useState(false);
   const [shuffledArray, setShuffledArray] = useState([]);
 
   useEffect(() => {
-    setShuffledArray(shuffle(wordsList));
+    let arr = [];
+
+    //decide the array
+    if("id" in params){
+      // specific
+      arr = booksList.find(i => i.id == params.id).words
+    }else {
+      // all
+      booksList.forEach(i => arr.push(...i.words));
+    }
+
+    // shuffle array
+    setShuffledArray(shuffle(arr));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -62,6 +76,32 @@ const PractisePage = () => {
       <TopBar />
       <Container 
         maxWidth="md">
+        <Box className="flexCenterSBRow" mt={2}>
+          {
+            "id" in params
+            ?
+            <Typography
+              variant='h6'
+              fontFamily={'Noto Sans, sans-serif'}
+              color="white">
+              { booksList.find(i => i.id == params.id)?.name}
+            </Typography>
+            :
+            <Typography
+              variant='h6'
+              fontFamily={'Noto Sans, sans-serif'}
+              color="white">
+              All words
+            </Typography>
+          }
+
+          <Typography
+            variant='h6'
+            fontFamily={'Noto Sans, sans-serif'}
+            color="white">
+            {index + 1}/{shuffledArray.length}
+          </Typography>
+        </Box>
         <Box
           sx={{ height: "100%" }}
           pt={2} pb={2}>
@@ -76,19 +116,20 @@ const PractisePage = () => {
             onSwipeLeft={handleNext}
             onSwipeRight={handlePrevious}>
             <Box
-              className='create__card'
-              sx={{ height: "calc(100vh - 225px)"}}
+              className='create__card flex_SBColumn'
+              sx={{ height: "calc(100vh - 280px)"}}
               mb={2}>
               <Typography
+                fontFamily={'Noto Sans, sans-serif'} 
                 variant='h3'
-                align='center'
-                mb={3}>
+                align='center'>
                 {shuffledArray[index]?.title}
               </Typography>
               {
                 reveal
                 ?
                 <Typography
+                  fontFamily={'Noto Sans, sans-serif'}
                   variant='h4'
                   align='center'>
                   {shuffledArray[index]?.content}
@@ -99,6 +140,7 @@ const PractisePage = () => {
                   <Button
                     variant='outlined'
                     color='secondary'
+                    size="large"
                     onClick={() => setReveal(true)}>
                     Show
                   </Button>
@@ -112,21 +154,14 @@ const PractisePage = () => {
               color="info"
               variant='outlined'
               startIcon={<ChevronLeftIcon />}
-              onClick={handlePrevious}
-              sx={{ width: "120px" }}>
-              Previous
+              onClick={handlePrevious}>
+              Prev
             </Button>
-            <Typography
-              variant='body2'
-              color="white">
-              {index + 1}/{shuffledArray.length}
-            </Typography>
             <Button
               color='success'
               variant='outlined'
               endIcon={<NavigateNextIcon />}
-              onClick={handleNext}
-              sx={{ width: "120px" }}>
+              onClick={handleNext}>
               Next
             </Button>
           </Box>
