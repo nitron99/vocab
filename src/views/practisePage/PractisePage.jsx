@@ -118,10 +118,12 @@ const PractisePage = () => {
             <Box
               className='create__card'
               sx={{ height: "calc(100vh - 280px)"}}
-              mb={2}>
+              mb={2}
+              p={4}>
               <Typography
                 fontFamily={'Noto Sans, sans-serif'} 
-                variant='h3'
+                variant='h3'  
+                mb={10}
                 align='center'>
                 {shuffledArray[index]?.title}
               </Typography>
