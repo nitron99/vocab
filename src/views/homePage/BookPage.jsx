@@ -1,6 +1,7 @@
 /* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { GestureDetector } from 'react-onsenui';
 
 import {
   Input,
@@ -134,7 +135,7 @@ const BookPage = () => {
               PRACTISE
             </Typography>
           </Box>
-          <Box className='word__card flexCenterCenterRow'
+          {/* <Box className='word__card flexCenterCenterRow'
             mt={2}
             sx={{ cursor: "pointer"}}
             onClick={() => handleDeleteBook(params.id)}>
@@ -147,7 +148,7 @@ const BookPage = () => {
               color="error">
               DELETE
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
         {
           booksList.find(i => i.id == params.id) && booksList.find(i => i.id == params.id).words && booksList.find(i => i.id == params.id).words.length > 0
@@ -169,12 +170,13 @@ const BookPage = () => {
                       &nbsp;-&nbsp;{item.content}
                   </Typography>
                 </Box>
-                <IconButton
-                  onClick={() => {
-                    handleDelete(params.id, item.id);
-                  }}>
-                  <DeleteIcon color="error"/>
-                </IconButton>
+                <GestureDetector
+                  onTap={() => {}}
+                  onHold={() => handleDelete(params.id, item.id)}>
+                  <IconButton>
+                    <DeleteIcon color="error"/>
+                  </IconButton>
+                </GestureDetector>
               </Box>
               ))
           :
