@@ -35,7 +35,7 @@ const BookPage = () => {
     createWord,
     getBooks,
     deleteWord,
-    deleteBook
+    // deleteBook
   } = useDB();
 
   const params = useParams();
@@ -75,14 +75,14 @@ const BookPage = () => {
     })
   }
 
-  const handleDeleteBook = (bookId) => {
-    deleteBook(bookId).then(() => {
-      setTimeout(() => {
-        getBooks();
-        navigate(-1);
-      }, 1000);  
-    })
-  }
+  // const handleDeleteBook = (bookId) => {
+  //   deleteBook(bookId).then(() => {
+  //     setTimeout(() => {
+  //       getBooks();
+  //       navigate(-1);
+  //     }, 1000);  
+  //   })
+  // }
 
   return (
     <Box sx={{ minHeight: "100vh" }}>
