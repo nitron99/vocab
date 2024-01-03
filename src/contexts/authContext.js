@@ -55,6 +55,7 @@ export function AuthProvider({children}) {
       // Sign-out successful.
       console.log("sign out successfully")
       localStorage.clear();
+      sessionStorage.clear();
     }).catch((error) => {
       // An error happened.
       console.log("something went wrong", error);

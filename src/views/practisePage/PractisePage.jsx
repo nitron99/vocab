@@ -37,7 +37,12 @@ const PractisePage = () => {
       arr = booksList.find(i => i.id == params.id).words
     }else {
       // all
-      booksList.forEach(i => arr.push(...i.words));
+      booksList.forEach(i => console.log(i));
+      booksList.forEach(i => {
+        if("words" in i){
+          arr.push(...i.words);
+        }
+      });
     }
 
     // shuffle array

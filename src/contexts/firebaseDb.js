@@ -33,6 +33,7 @@ export function DbProvider({children}) {
           console.log(snapshot.val())
           setBooksList(snapshot.val().books || []);
         } else {
+          setBooksList([]);
           console.log("No data available");
         }
       })
@@ -170,9 +171,15 @@ export function DbProvider({children}) {
       });
   }
 
+
+  function clearBooksList() {
+    setBooksList([]);
+  }
+
   const database = {
     // variables
     booksList,
+    clearBooksList,
 
     // functions
     getBooks,

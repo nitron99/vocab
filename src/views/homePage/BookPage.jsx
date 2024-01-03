@@ -121,20 +121,24 @@ const BookPage = () => {
               ADD
             </Typography>
           </Box>
-          <Box className='word__card flexCenterCenterRow'
-            mt={2}
-            sx={{ cursor: "pointer" }}
-            onClick={() => navigate("/practise/" + params.id)}>
-            <SportsMartialArtsIcon 
-              color="secondary"/>
-            <Typography 
-              variant='body2'
-              fontWeight={600}
-              fontFamily={'Noto Sans, sans-serif'}
-              color="secondary">
-              PRACTISE
-            </Typography>
-          </Box>
+          {
+            booksList.find(i => i.id == params.id) && booksList.find(i => i.id == params.id).words && booksList.find(i => i.id == params.id).words.length > 0
+            &&
+            <Box className='word__card flexCenterCenterRow'
+              mt={2}
+              sx={{ cursor: "pointer" }}
+              onClick={() => navigate("/practise/" + params.id)}>
+              <SportsMartialArtsIcon 
+                color="secondary"/>
+              <Typography 
+                variant='body2'
+                fontWeight={600}
+                fontFamily={'Noto Sans, sans-serif'}
+                color="secondary">
+                PRACTISE
+              </Typography>
+            </Box>
+          }
           {/* <Box className='word__card flexCenterCenterRow'
             mt={2}
             sx={{ cursor: "pointer"}}
@@ -240,6 +244,7 @@ const BookPage = () => {
               marginTop: 2,
               color: styles['main'] }}
             value={content}
+            multiline={true}
             onChange={(e) => setContent(e.target.value)}
             />
           <Button

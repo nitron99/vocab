@@ -31,6 +31,15 @@ const AuthPage = () => {
             Vocab.
           </Typography>
 
+          <Typography 
+            color="white"
+            align='center'
+            variant='h6'
+            fontFamily={'Noto Sans, sans-serif'}
+            fontWeight={400}>
+            A vocabulary learning tool.
+          </Typography>
+
           <Button 
             variant="outlined" 
             onClick={handleLogin} 

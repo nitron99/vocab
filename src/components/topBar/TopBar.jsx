@@ -11,9 +11,11 @@ import {
 import { useAuth } from  '../../contexts/authContext';
 
 import styles from "../../global.scss";
+import { useDB } from '../../contexts/firebaseDb';
 
 const TopBar = () => {
   const { logout } = useAuth();
+  const { clearBooksList } = useDB();
 
   return (
     <Box sx={{ 
@@ -37,6 +39,7 @@ const TopBar = () => {
               sx={{ padding: 0 }}
               onClick={() => {
                 logout();
+                clearBooksList();
               }}>
               <Avatar
                 alt={JSON.parse(localStorage.getItem("auth"))?.displayName}
